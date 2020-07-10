@@ -28,7 +28,7 @@ Then add this hook `{hook name="hcaptcha.check"}` in every form where you want t
 
 # Module hCaptcha© pout Thelia
 
-C module permet de protéger vos formulaires via le service hCaptcha.
+Ce module permet de protéger vos formulaires via le service hCaptcha.
 
 ## Installation
 
