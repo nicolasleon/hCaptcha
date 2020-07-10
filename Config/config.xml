@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns="http://thelia.net/schema/dic/config"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://thelia.net/schema/dic/config http://thelia.net/schema/dic/config/thelia-1.0.xsd">
+
+
+    <forms>
+        <form name="hcaptcha_configuration.form" class="HCaptcha\Form\ConfigurationForm" />
+    </forms>
+
+<!--     <services>
+        <service id="hcaptcha.checker" class="HCaptcha\EventListener\CaptchaListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="request"/>
+        </service>
+    </services> -->
+
+    <hooks>
+        <hook id="hcaptcha.hook" class="HCaptcha\Hook\FrontHook">
+            <tag name="hook.event_listener" event="main.head-top" type="front" templates="render:hcaptcha/hcaptcha-js.html" />
+            <tag name="hook.event_listener" event="hcaptcha.js" type="front" templates="render:hcaptcha/hcaptcha-js.html" />
+            <tag name="hook.event_listener" event="hcaptcha.check" type="front" method="onHCaptchaWidget" />
+            <tag name="hook.event_listener" event="module.configuration" type="back" templates="render:hcaptcha/module_configuration.html" />
+        </hook>
+    </hooks>
+</config>

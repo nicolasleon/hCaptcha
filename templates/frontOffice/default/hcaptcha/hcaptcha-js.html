@@ -1,0 +1,22 @@
+<script src="https://hcaptcha.com/1/api.js?hl={lang attr="code"}" async defer></script>
+<script>
+    window.onload = function() {
+        let hCaptchaWrapper = document.getElementById("hcaptcha");
+
+        // Prevent form submit without captcha response
+        if (hCaptchaWrapper !== null) {
+            let form = hCaptchaWrapper.parentElement
+            form.addEventListener("submit", function(event) {
+                console.log('Listener called!')
+                event.preventDefault()
+                hcaptcha.execute()
+            });
+
+            onSubmit = function() {
+                if (form.reportValidity() !== false) {
+                    form.submit();
+                }
+            }
+        }
+    }
+</script>
