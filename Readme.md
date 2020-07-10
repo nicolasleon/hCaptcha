@@ -25,3 +25,31 @@ Then add this hook `{hook name="hcaptcha.check"}` in every form where you want t
 </form>
 ```
 
+
+# Module hCaptcha© pout Thelia
+
+C module permet de protéger vos formulaires via le service hCaptcha.
+
+## Installation
+
+Télécharger le fichier zip du module. Dans le backoffice de Thelia rendez vous sur la [page de gestion des modules](http://your_site.com/admin/modules) pour installer et activer le fichier téléchargé.
+
+## Utilisation
+
+Avant de pouvoir utiliser le module vous devez créer une clé d'API à l'adresse suivante [https://dashboard.hcaptcha.com/](https://dashboard.hcaptcha.com/).
+Configurez ensuite le module avec les clés créées depuis le dashboard hCaptcha (clé de site et clé secrète) sur la page de configuration du module [http://your_site.com/admin/module/HCaptcha](http://your_site.com/admin/module/HCaptcha).
+
+A l'heure actuelle seule la version invisible de hCaptcha est disponible (plus d'informations ici [invisible captcha](https://docs.hcaptcha.com/invisible))
+
+### Hook
+
+Si votre template n'inclue pas le hook `{hook name="main.head-top"}` vous devrez ajouter le hook suivant `{hook name="hcaptcha.js"}` au début de votre section `<head>`.
+
+Ajoutez ensuite le hook `{hook name="hcaptcha.check"}` dans chacun des formulaires où vous souhaitez contrôler si l'utilisateur est humain. Le hook devra être un descent direct du formulaire comme dans le code suivant :
+```
+<form id="form-contact" action="{url path="/contact"}" method="post">
+    // Descendant diretc de l'élément <form>
+    {hook name="hcaptcha.check"}
+</form>
+```
+
